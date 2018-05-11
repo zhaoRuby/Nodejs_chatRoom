@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/chatRoom/css/main.css">
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script>
+
+		$(document).ready(function(){
+			var socket = io();
+			socket.on('connect',function(){
+				$("#connectionStatus").text("connected");
+			});
+
+			// 顯示在線人數
+			socket.on('onlineNumber',function(number){
+				$("#userNumber").text(number);
+			});
+
+			//顯示USER名稱、訊息
+			socket.on('chatmsg', function(msg){
+				$("#msgDialog").append("<span>"+msg+"</span><br>");	
+			});
+
+			socket.on('disconnect',function(){
+				$("#connectionStatus").text("disconnected");
+			});
+
+
+			$("#bt_send").click(function(){
+				//傳送訊息給server
+				socket.emit('msg',{
+					userName:$("#userName").val(),
+					msg:$("#msg").val()
+				});
+			});		
+		});
+
+	</script>
+
+</head>
+<body>
+	<!--bar-->
+	<div class="alert alert-primary" role="alert">
+		<div id="title">歡迎來到74團聊天室</div>
+		<div id="serverStatus">Server:<span id="connectionStatus"></span></div>
+		<div id="number">在線人數: <span id="userNumber"></span>
+		</div>
+	</div>
+
+	<!--聊天室訊息框-->
+	<div class="container alert alert-info " id="msgDialog">
+	
+	</div>
+
+	<!--使用者暱稱-->
+	<div class="input-group mb-3">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text">暱稱：</span>
+	  </div>
+	  <input id="userName" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+	</div>
+
+	<!--使用者輸入訊息框-->
+	<div class="input-group">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text">輸入訊息：</span>
+	  </div>
+	  <textarea id="msg" class="form-control" aria-label="With textarea"></textarea>
+	  <button id="bt_send" type="button" class="btn btn-outline-success">Success</button>
+	</div>
+
+</body>
+</html>
