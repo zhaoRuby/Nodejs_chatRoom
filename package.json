@@ -1,18 +1,27 @@
 {
-  "name": "Nodejs_chatRoom",
+  "name": "chatroom",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-      "start": "node index.js",
-      "test": "mocha",
-      "postinstall": "bower install && grunt build"
-  },
-  "author": "zhaoRuby",
-  "license": "ISC",
-  "private":true,
-  "dependencies": {
-    "express": "^4.16.3",
-    "socket.io": "^2.0.4"
+    "engines":{
+      "node":"6.10.0"
+    }
   }
+  "description": "node js",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start":"node index.js",
+    "test": "chat",
+    "postinstall": "bower install && grunt build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaoRuby/Nodejs_chatRoom.git"
+  },
+  "author": "rubyzhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhaoRuby/Nodejs_chatRoom/issues"
+  },
+  "homepage": "https://github.com/zhaoRuby/Nodejs_chatRoom#readme"
 }
