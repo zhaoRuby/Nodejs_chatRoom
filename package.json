@@ -4,13 +4,19 @@
     "engines":{
       "node":"6.10.0"
     },
-  "description": "node js",
+  "description": "node index.js",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "express":"^4.16.3",
+    "socket.io":"^2.0.4"
+    },
+  "devDependencies": {
+    "request": "^2.81.0",
+    "tape": "^4.7.0"
+  },
   "scripts": {
     "start":"node index.js",
-    "test": "chat",
+    "test": "node index.js",
     "postinstall": "bower install && grunt build"
   },
   "repository": {
@@ -18,9 +24,14 @@
     "url": "git+https://github.com/zhaoRuby/Nodejs_chatRoom.git"
   },
   "author": "rubyzhao",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zhaoRuby/Nodejs_chatRoom/issues"
   },
-  "homepage": "https://github.com/zhaoRuby/Nodejs_chatRoom#readme"
+  "homepage": "https://github.com/zhaoRuby/Nodejs_chatRoom#readme",
+  "keyword":[
+    "node",
+    "heroku",
+    "express"
+  ]
 }
