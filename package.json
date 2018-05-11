@@ -1,5 +1,5 @@
 {
-  "name": "nodeserver",
+  "name": "Nodejs_chatRoom",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,7 @@
   },
   "author": "",
   "license": "ISC",
+  "private":true,
   "dependencies": {
     "express": "^4.16.3",
     "socket.io": "^2.0.4"
